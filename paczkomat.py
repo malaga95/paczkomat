@@ -29,16 +29,15 @@ else:
    highest_weight_of_package = 0
    #setting value for total kg's
    total_kg = 0
-   
-
-#PROGRAM TERAZ DZIELI PRZEDMIOTY, POPRAW TAK ABY PO PRZEKROCZENIU DANEJ WAGI TWORZYŁ NOWA PACZKE Z CAŁYM PRZEDMIOTEM
-
+   #setting lowest weight of package to 20
+   lowest_weight_of_package = 20
 
 
 # "for" each item unique
    for counter in range (items_amount):
       weight = input(f'Please enter weight of {counter + 1} item: ')
       weight = int(weight)
+      
       if not weight:
          break
       if weight > max_weight and total_weight <20:
@@ -46,9 +45,9 @@ else:
          weight = 0
          weight = input(f'Weight of each unique item must not extend 10 kg please try again. \n Please enter weight of {counter + 1} item:  ')
          weight = int(weight)
-
-      total_weight += weight
+         
       total_kg += weight
+      total_weight += weight
       print(f'Current package weight is : {total_weight}')
       #creating new package if weight extended expected value
       if total_weight > 20:
@@ -58,20 +57,30 @@ else:
          package_weight = total_weight - weight
          #adding a package
          package_amount += 1
+         if package_weight < lowest_weight_of_package:
+            lowest_weight_of_package = package_weight
          total_weight = weight
          print(f'Current package weight is : {total_weight}')
-         if weight > highest_weight_of_element:
-            highest_weight_of_element = weight
-      if total_weight > highest_weight_of_package:
+         #if weight > highest_weight_of_element:
+          #  highest_weight_of_element = weight
+         
+      '''if total_weight > highest_weight_of_package:
          highest_weight_of_package = total_weight
+      '''
+   
    #print(f'Amount of packages : {package_amount + 1}')
-   print(f'Total number of packages is : {package_amount + 1}')
-   print(f'number of empty kg is {package_amount * 20 - total_kg}')
-   print(f'najciezszy element wazyl {highest_weight_of_element}')
-   print(f'najciezsza paczka wazyla {highest_weight_of_package}')
-   #print(f'Paczka posiadajaca najwiecej pustych kilogramow miala ich P')
+   #Creating a exception for last package
 
-   #DOKONCZYC ZADANIE PO ZAJECIACH
+   if total_weight<lowest_weight_of_package:
+      lowest_weight_of_package = total_weight
+
+   print(f'Total number of packages is : {package_amount + 1}')
+   print(f'number of empty kg is {(package_amount + 1) * 20 - total_kg}')
+   print(f'lightest package had {20 - lowest_weight_of_package} empty kilos')
+   #Niepotrzebne do zadania
+   #print(f'najciezszy element wazyl {highest_weight_of_element}')
+   #print(f'najciezsza paczka wazyla {highest_weight_of_package}')
+   #print(f'Paczka posiadajaca najwiecej pustych kilogramow miala ich P')
    #
 
 
