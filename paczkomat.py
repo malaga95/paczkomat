@@ -38,13 +38,17 @@ else:
       weight = input(f'Please enter weight of {counter + 1} item: ')
       weight = int(weight)
       
-      if not weight:
+      if not weight and weight < 0:
          break
-      if weight > max_weight and total_weight <20:
+      #ask about how to get out from a loop when user entries ennormous value without printing messages after loop
+      if weight > max_weight:
          #counter = counter - 1
          weight = 0
          weight = input(f'Weight of each unique item must not extend 10 kg please try again. \n Please enter weight of {counter + 1} item:  ')
          weight = int(weight)
+         if weight > max_weight:
+            print("You have entered incorrect values, program will close now.")
+            break
          
       total_kg += weight
       total_weight += weight
@@ -87,3 +91,6 @@ else:
     #package_weight = input("Podaj ile waży paczka\n ")
     
     #if package_weight == 0
+
+
+    
