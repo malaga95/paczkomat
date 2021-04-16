@@ -2,14 +2,9 @@
 items_amount = input("Hello, thank You for choosing us to deliver\n How many items would You like to send ? \n")
 items_amount = int(items_amount)
 #Getting properly items amount
-while items_amount <= 0:
+if items_amount <= 0 or items_amount > 99:
    print("Sorry, you gave incorrect value")
-   break 
-while items_amount > 99:
-   print("Slow down a little bit, maximum amount of packages that you can add at once is 99.")
-   break
 else:   
-#Value to incrementate
    counter = 0
    #Setting up packages
    #temp = 0
